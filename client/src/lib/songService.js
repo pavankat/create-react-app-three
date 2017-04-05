@@ -1,43 +1,39 @@
-const baseUrl = 'http://localhost:3001/songs'
+// All song AJAX requests will start with /songs
+const BASEURL = '/songs';
 
-export const __loadSongs = () => {
-  return fetch(baseUrl)
-    .then(res => res.json())
-}
+// Storing the headers in a variable since we use them more than once
+const headers = {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json'
+};
 
-export const __loadSong = (song) => {
-  return fetch(`${baseUrl}/${song._id}`)
-    .then(res => res.json())
-}
-
-export const __createSong = (song) => {
-  return fetch(baseUrl, {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(song)
-  }).then(res => res.json())
-}
-
-export const __updateSong = (song, _id) => {
-  return fetch(`${baseUrl}/${_id}`, {
-    method: 'PUT',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(song)
-  }).then(res => res.json())
-}
-
-export const __destroySong = (id) => {
-  return fetch(`${baseUrl}/${id}`, {
-    method: 'DELETE',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    }
-  }).then(res => res.json())
-}
+// Exporting an object containing all of the methods we will use to communicate with the database
+export default {
+  loadSongs: function() {
+    return fetch(BASEURL)
+      .then(res => res.json());
+  },
+  getSong: function(id) {
+    return fetch(`${BASEURL}/${id}`)
+      .then(res => res.json());
+  },
+  createSong: function(song) {
+    return fetch(BASEURL, {
+      method: 'POST',
+      body: JSON.stringify(song),
+      headers,
+    }).then(res => res.json());
+  },
+  updateSong: function(song) {
+    return fetch(`${BASEURL}/${song._id}`, {
+      method: 'PUT',
+      body: JSON.stringify(song),
+      headers,
+    }).then(res => res.json());
+  },
+  destroySong: function(id) {
+    return fetch(`${BASEURL}/${id}`, {
+      method: 'DELETE'
+    }).then(res => res.json());
+  }
+} 

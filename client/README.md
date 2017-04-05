@@ -1,18 +1,3 @@
-# Things we go over in this app:
-
-## es6 stuff
-
-* go over new function notation with es6
-
-## react stuff
-
-* setting state and using state in jsx
-  * start with App.js
-
-* setting state and using state in a child component with a parent component
-  * move on to AppTwo.js
-
-
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

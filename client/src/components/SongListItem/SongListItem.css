@@ -1,0 +1,13 @@
+.edit,
+.delete {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.delete {
+  color: darkred;
+}
+
+.edit {
+  color: dodgerblue;
+}

@@ -10,7 +10,11 @@ var app = express();
 app.use(logger("dev"));
 
 
-app.use(bodyParser());
+// configure the app to use bodyParser()
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
 
 // Database configuration
 var databaseUrl = "songs_db";
@@ -23,22 +27,6 @@ var db = mongojs(databaseUrl, collections);
 db.on("error", function(error) {
   console.log("Database Error:", error);
 });
-
-
-/*
-  if we don't do this here then we'll get this error in apps that use this api
-
-  Fetch API cannot load No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
-
-  read up on CORs here: https://www.maxcdn.com/one/visual-glossary/cors/
-*/
-  //allow the api to be accessed by other apps
-  app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
-    next();
-  });
 
 
 // songs Routes
@@ -96,30 +84,13 @@ db.on("error", function(error) {
 
   //update a song
   app.put("/songs/:id", function(req, res) {
-    //if we use this then we won't get the updated document back
-    /* 
-      db.songs.update({
-        "_id": mongojs.ObjectId(req.params.id)
-      }, {
-        $set: {
-          "artist": req.body.artist,
-          "songName": req.body.songName
-        }
-      }, function(error, editedSong) {
-        if (error) {
-          res.send(error);
-        }else {
-          res.json(editedSong);
-        }
-      });
-    */
 
     db.songs.findAndModify({
       query: { 
         "_id": mongojs.ObjectId(req.params.id) 
       },
       update: { $set: {
-        "artist": req.body.artist, "songName": req.body.songName } 
+        "artist": req.body.artist, "title": req.body.title } 
       },
       new: true
       }, function (err, editedSong) {
