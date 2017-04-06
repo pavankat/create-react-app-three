@@ -13,7 +13,6 @@ class SongList extends Component {
       songs: []
     };
     // Bind the methods we need to pass into other components that need to maintain `this`
-    this.renderList = this.renderList.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
     this.handleEditClick = this.handleEditClick.bind(this);
     this.loadSongs = this.loadSongs.bind(this);
