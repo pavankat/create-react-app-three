@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3001/songs'
+const baseUrl = process.env.REACT_APP_API + '/songs';
 
 export const __loadSongs = () => {
   return fetch(baseUrl)
