@@ -14,10 +14,14 @@ class App extends Component {
       currentSongName : '',
     }
 
+    //when you use arrow syntax for functions, es7 will autobind those functions to the component
+      //so you don't need these lines here
+    //--
     this._handleInputChange = this._handleInputChange.bind(this);
     this._handleSubmit = this._handleSubmit.bind(this);
     this._handleRemove = this._handleRemove.bind(this);
     this._handleUpdate = this._handleUpdate.bind(this);
+    //--
   }
 
   componentDidMount() {
@@ -95,6 +99,7 @@ class App extends Component {
         <br /><br />
 
         <h2>Add a Song</h2>
+        {/* you can also pass nothing to edit and it would work fine */}
         <SongForm 
           songName={this.state.currentSongName}
           artist={this.state.currentArtistName}
