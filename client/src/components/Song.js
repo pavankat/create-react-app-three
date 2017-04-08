@@ -7,8 +7,8 @@ class Song extends Component {
 
     this.state = {
       edit : false,
-      currentSongName : props.songName,
-      currentArtistName : props.artist
+      currentSongName : "",
+      currentArtistName : ""
     }
 
     //when you use arrow syntax for functions, es7 will autobind those functions to the component
@@ -38,8 +38,8 @@ class Song extends Component {
     let displayEditForm = null;
     if (this.state.edit) {
       displayEditForm = <SongForm 
-          songName={this.state.currentSongName}
-          artist={this.state.currentArtistName}
+          songName={this.state.currentSongName || this.props.songName}
+          artist={this.state.currentArtistName || this.props.artist}
           handleSubmit={this.props.handleUpdate}
           handleInputChange={this._handleInputChange}
           edit={true}
