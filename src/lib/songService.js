@@ -1,4 +1,5 @@
-const baseUrl = process.env.REACT_APP_API + '/songs';
+if (process.env.NODE_ENV == 'production') const baseUrl = "https://floating-mountain-13593.herokuapp.com" + '/songs';
+else const baseUrl = process.env.REACT_APP_API + '/songs';
 
 export const __loadSongs = () => {
   return fetch(baseUrl)
