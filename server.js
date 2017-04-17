@@ -9,7 +9,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, './build', 'index.html'));
 });
 
-// Listen on port 9000
+// Listen on port 3000
   app.listen(PORT, function() {
     console.log('🌎 ==> Now listening on PORT %s! Visit http://localhost:%s in your browser!', PORT, PORT);
   });
