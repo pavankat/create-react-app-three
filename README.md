@@ -1,5 +1,7 @@
 # Need to update this.
 
+deployment is broken in this version. environment variable was added to heroku.
+
 deployed url: https://ancient-eyrie-86258.herokuapp.com/
 
 This app works with in conjunction to this app: https://github.com/pavankat/song-api
