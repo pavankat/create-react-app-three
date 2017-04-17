@@ -1,6 +1,8 @@
 # Need to update this.
 
-This works with https://github.com/pavankat/song-api
+deployed url: https://ancient-eyrie-86258.herokuapp.com/
+
+This app works with in conjunction to this app: https://github.com/pavankat/song-api
 
 ## to start up app
 
