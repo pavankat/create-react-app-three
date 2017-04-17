@@ -1,3 +1,7 @@
+# Need to update this.
+
+This works with https://github.com/pavankat/song-api
+
 ## to start up app
 
 #### in the client folder: make a file called .env
